@@ -24,6 +24,8 @@ print("    arm throttle")
 print()
 
 drone = Vehicle("udp:127.0.0.1:14550")
+planox = 0.00014
+planoy = 0.00008
 
 try:
     # Conectar
@@ -58,9 +60,9 @@ try:
 
     # Norte
     pos = drone.state.position
-    print(f"\n5. Indo para norte (+3m)...")
+    print(f"\n5. Indo para norte...")
     result = drone.goto(
-        latitude=pos.latitude + 0.00003,
+        latitude=pos.latitude + (planox/2),
         longitude=pos.longitude,
         altitude=5.0,
         ground_speed=3.0,
@@ -72,10 +74,10 @@ try:
     
       # Ir para leste
     pos = drone.state.position
-    print(f"\n5. Indo para leste (3m)...")
+    print(f"\n5. Indo para leste...")
     result = drone.goto(
         latitude=pos.latitude,
-        longitude=pos.longitude + 0.00003,
+        longitude=pos.longitude + (planoy/2),
         altitude=5.0,
         ground_speed=3.0,
         acceptance_radius=3.0,
@@ -86,10 +88,10 @@ try:
     
     # Ir para Oeste
     pos = drone.state.position
-    print(f"\n5. Indo para oeste (+6m)...")
+    print(f"\n5. Indo para oeste...")
     result = drone.goto(
         latitude=pos.latitude,
-        longitude=pos.longitude - 0.00006,
+        longitude=pos.longitude - planoy,
         altitude=5.0,
         ground_speed=3.0,
         acceptance_radius=3.0,
@@ -103,9 +105,9 @@ try:
     for i in range(2):
     #desce pro sul 
       pos = drone.state.position
-      print(f"\n5. Indo para sul (+1m)...")
+      print(f"\n5. Indo para sul...")
       result = drone.goto(
-          latitude=pos.latitude - 0.00001,
+          latitude=pos.latitude - (planox/6),
           longitude=pos.longitude,
           altitude=5.0,
           ground_speed=3.0,
@@ -117,10 +119,10 @@ try:
     
     # Ir para leste
       pos = drone.state.position
-      print(f"\n5. Indo para leste (6m)...")
+      print(f"\n5. Indo para leste...")
       result = drone.goto(
           latitude=pos.latitude,
-          longitude=pos.longitude + 0.00006,
+          longitude=pos.longitude + planoy,
           altitude=5.0,
           ground_speed=3.0,
           acceptance_radius=3.0,
@@ -133,7 +135,7 @@ try:
       pos = drone.state.position
       print(f"\n5. Indo para sul (+1m)...")
       result = drone.goto(
-          latitude=pos.latitude - 0.00001,
+          latitude=pos.latitude - (planox/6),
           longitude=pos.longitude,
           altitude=5.0,
           ground_speed=3.0,
@@ -145,10 +147,10 @@ try:
     
     # Ir para oeste
       pos = drone.state.position
-      print(f"\n5. Indo para oeste (-6m)...")
+      print(f"\n5. Indo para oeste...")
       result = drone.goto(
           latitude=pos.latitude,
-          longitude=pos.longitude - 0.00006,
+          longitude=pos.longitude - planoy,
           altitude=5.0,
           ground_speed=3.0,
           acceptance_radius=3.0,
