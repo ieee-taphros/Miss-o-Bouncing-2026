@@ -26,6 +26,7 @@ print()
 drone = Vehicle("udp:127.0.0.1:14550")
 planox = 0.00014
 planoy = 0.00008
+n = 6 #Numero que divide plano x (quanto maior, mais ele vai ziguezaguear)
 
 try:
     # Conectar
@@ -102,7 +103,7 @@ try:
     
     # Passo 2 - Aqui vai ter um for pra repetir o ngc
 
-    for i in range(2):
+    for i in range((n/2)-1):
     #desce pro sul 
       pos = drone.state.position
       print(f"\n5. Indo para sul...")
