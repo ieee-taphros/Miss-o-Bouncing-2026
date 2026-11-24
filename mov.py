@@ -25,8 +25,9 @@ print()
 
 drone = Vehicle("udp:127.0.0.1:14550")
 
-planox = 0.00012 #Aqui tem que tirar 2
-planoy = 0.00008
+planox = 0.00010 #Aqui tem que tirar 2
+planoy = 0.00006
+altura = 2 # Em metros
 
 n = 6 #Numero que divide plano x (quanto maior, mais ele vai ziguezaguear)
 k = int((n/2))
@@ -68,7 +69,7 @@ try:
     result = drone.goto(
         latitude=pos.latitude + (planox/2),
         longitude=pos.longitude,
-        altitude=0.5,
+        altitude= altura,
         ground_speed=1.0,
         acceptance_radius= 0,
         timeout=30.0
@@ -82,7 +83,7 @@ try:
     result = drone.goto(
         latitude=pos.latitude,
         longitude=pos.longitude + (planoy/2),
-        altitude=0.5,
+        altitude= altura,
         ground_speed=1.0,
         acceptance_radius= 0,
         timeout=30.0
@@ -96,7 +97,7 @@ try:
     result = drone.goto(
         latitude=pos.latitude,
         longitude=pos.longitude - planoy,
-        altitude=0.5,
+        altitude= altura,
         ground_speed=1.0,
         acceptance_radius= 0,
         timeout=30.0
@@ -113,7 +114,7 @@ try:
       result = drone.goto(
           latitude=pos.latitude - (planox/n),
           longitude=pos.longitude,
-          altitude=0.5,
+          altitude= altura,
           ground_speed=1.0,
           acceptance_radius= 0,
           timeout=30.0
@@ -127,7 +128,7 @@ try:
       result = drone.goto(
           latitude=pos.latitude,
           longitude=pos.longitude + planoy,
-          altitude=0.5,
+          altitude= altura,
           ground_speed=1.0,
           acceptance_radius= 0,
           timeout=30.0
@@ -141,7 +142,7 @@ try:
       result = drone.goto(
           latitude=pos.latitude - (planox/n),
           longitude=pos.longitude,
-          altitude=0.5,
+          altitude= altura,
           ground_speed=1.0,
           acceptance_radius= 0,
           timeout=30.0
@@ -155,7 +156,7 @@ try:
       result = drone.goto(
           latitude=pos.latitude,
           longitude=pos.longitude - planoy,
-          altitude=0.5,
+          altitude= altura,
           ground_speed=1.0,
           acceptance_radius= 0,
           timeout=30.0
